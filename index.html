@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YOD-AI</title>
   <link rel="icon" type="image/png" href="static/favicon.png">
-  <!-- You can add a modern Google font if desired -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Global Styles */
+    :root {
+      --accent-red: #db4437;
+      --light-gray: #D2D2E7;
+      --light-green: #CFDFD2;
+      --accent-green: #4E9A4F;
+      --background: #ffffff;
+      --text-color: #333333;
+    }
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,44 +22,65 @@
     }
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #2c003e, #000000);
-      color: #e0e0e0;
+      background: var(--background);
+      color: var(--text-color);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     a {
-      color: #bb86fc;
+      color: var(--accent-red);
       text-decoration: none;
       transition: color 0.3s ease;
     }
     a:hover {
-      color: #d0bfff;
+      color: var(--accent-green);
     }
-    /* Header */
     header {
-      background-color: #000;
-      padding: 20px 0;
+      background-color: var(--light-green);
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header img {
-      width: 15%;
-      min-width: 300px;
+      width: 200px;
       transition: transform 0.3s ease;
     }
     header img:hover {
       transform: scale(1.05);
     }
-    /* Sections */
+    nav {
+      margin-top: 10px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav ul li {
+      padding: 10px 20px;
+      background: var(--light-gray);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    nav ul li:hover {
+      background: var(--accent-green);
+      color: #fff;
+    }
     section {
-      background-color: rgba(20, 20, 20, 0.95);
       margin: 40px auto;
       padding: 30px;
-      border-radius: 1rem;
       max-width: 1000px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      background-color: var(--light-gray);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     h2 {
-      color: #bb86fc;
+      color: var(--accent-red);
       margin-bottom: 15px;
       position: relative;
       padding-bottom: 10px;
@@ -63,25 +90,26 @@
       position: absolute;
       width: 50px;
       height: 3px;
-      background-color: #bb86fc;
+      background-color: var(--accent-red);
       bottom: 0;
       left: 0;
       border-radius: 3px;
     }
     p, li {
-      color: #e0e0e0;
       margin-bottom: 15px;
     }
     ul {
       margin-left: 20px;
     }
-    /* Team Section */
     .team-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
       text-align: center;
     }
     .team-member {
-      display: inline-block;
-      margin: 15px;
+      width: 150px;
       transition: transform 0.3s ease;
     }
     .team-member:hover {
@@ -91,115 +119,173 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      border: 3px solid #bb86fc;
+      border: 3px solid var(--accent-red);
       margin-bottom: 10px;
     }
-    .team-member p {
-      font-weight: 700;
-    }
-    /* Footer */
     footer {
-      background-color: #000;
+      background-color: var(--light-green);
       padding: 15px;
       text-align: center;
-      color: #e0e0e0;
       font-size: 0.9em;
-      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
-    }
-    /* Responsive PDF Viewer (if needed later) */
-    #pdfViewer {
-      display: none;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
       margin-top: 20px;
     }
-    /* Media Queries */
+    /* Tab Content Styles */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-link.active {
+      background: var(--accent-green);
+      color: #fff;
+    }
+    /* Responsive Design */
     @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
       header img {
-        width: 50%;
+        width: 150px;
       }
       section {
         margin: 20px;
         padding: 20px;
       }
       .team-member {
-        margin: 10px;
+        width: 120px;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="static/yodai-logo.jpeg" alt="logo" />
+    <img src="static/yodai-logo.png" alt="YOD-AI Logo" />
+    <nav>
+      <ul>
+        <li class="tab-link active" data-tab="home">Home</li>
+        <li class="tab-link" data-tab="about">About</li>
+        <li class="tab-link" data-tab="team">Team</li>
+        <li class="tab-link" data-tab="news">News</li>
+        <li class="tab-link" data-tab="contact">Contact</li>
+      </ul>
+    </nav>
   </header>
 
-  <section>
-    <h2>Welcome to YOD-AI!</h2>
-    <p>
-      Here is the official website of YOD-AI! Stay updated with the latest information and news about our project and activities.
-    </p>
-    <p>
-      After the recent legislation in Türkiye that mandates the removal of stray animals from public places and their placement in shelters,
-      it is urgent to enhance the adoption process to avoid overcrowding and euthanasia risks for these animals. In July 2024,
-      this law was passed to address public safety concerns, but it has proved to be a source of tremendous difficulty for animal welfare organizations.
-      Our goal is to build a new platform to simplify adoption. Our goal is to strengthen the bond between potential adopters and the animals in need by providing
-      comprehensive animal profiles, including health records and behavioral traits, personalized care recommendations, and most importantly,
-      a sophisticated personalized stray animal recommendation system. The platform will also provide adoption guidance and post-adoption support.
-      Beyond providing a solution to the urgent problems created by the new law, this initiative also serves to support the long-term health of stray animals in
-      Türkiye through the promotion of sustainable adoptions and strained shelter resources.
-    </p>
-    <p>
-      The core purpose of Köpük is to simplify and optimize the process of matching potential adopters with animals in need of a loving home.
-      The platform achieves this by creating in-depth, comprehensive animal profiles that include health records, vaccination histories, behavioral assessments,
-      and personalized care recommendations. These detailed profiles provide adopters with a clear understanding of each animal’s needs, enabling them to make
-      well-informed decisions and be better prepared for pet ownership. A sophisticated matching algorithm further refines the process by aligning adopter lifestyles,
-      preferences, and capabilities with the specific requirements of each animal, thereby fostering more compatible and successful adoptions.
-      Beyond the initial match, the platform offers robust support features through an artificial intelligence-driven chatbot that assists users at every stage—from
-      pre-adoption inquiries and the application process to post-adoption support for training and veterinary care. In doing so, Köpük not only reduces the risk of
-      returned adoptions and alleviates the burden on overcrowded shelters but also advances the broader mission of animal welfare by ensuring that animals find permanent,
-      loving homes while equipping adopters with the necessary tools and knowledge for responsible pet care.
-    </p>
-  </section>
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="tab-content active">
+      <h2>Welcome to YOD-AI!</h2>
+      <p>
+        Here is the official website of YOD-AI! Stay updated with the latest information and news about our project and activities.
+      </p>
+      <p>
+        After the recent legislation in Türkiye that mandates the removal of stray animals from public places and their placement in shelters,
+        it is urgent to enhance the adoption process to avoid overcrowding and euthanasia risks for these animals. In July 2024,
+        this law was passed to address public safety concerns, but it has proved to be a source of tremendous difficulty for animal welfare organizations.
+        Our goal is to build a new platform to simplify adoption. Our goal is to strengthen the bond between potential adopters and the animals in need by providing
+        comprehensive animal profiles, including health records and behavioral traits, personalized care recommendations, and most importantly,
+        a sophisticated personalized stray animal recommendation system. The platform will also provide adoption guidance and post-adoption support.
+        Beyond providing a solution to the urgent problems created by the new law, this initiative also serves to support the long-term health of stray animals in
+        Türkiye through the promotion of sustainable adoptions and strained shelter resources.
+      </p>
+      <p>
+        The core purpose of Köpük is to simplify and optimize the process of matching potential adopters with animals in need of a loving home.
+        The platform achieves this by creating in-depth, comprehensive animal profiles that include health records, vaccination histories, behavioral assessments,
+        and personalized care recommendations. These detailed profiles provide adopters with a clear understanding of each animal’s needs, enabling them to make
+        well-informed decisions and be better prepared for pet ownership. A sophisticated matching algorithm further refines the process by aligning adopter lifestyles,
+        preferences, and capabilities with the specific requirements of each animal, thereby fostering more compatible and successful adoptions.
+        Beyond the initial match, the platform offers robust support features through an artificial intelligence-driven chatbot that assists users at every stage—from
+        pre-adoption inquiries and the application process to post-adoption support for training and veterinary care. In doing so, Köpük not only reduces the risk of
+        returned adoptions and alleviates the burden on overcrowded shelters but also advances the broader mission of animal welfare by ensuring that animals find permanent,
+        loving homes while equipping adopters with the necessary tools and knowledge for responsible pet care.
+      </p>
+    </section>
 
-  <section>
-    <h2>Who We Are</h2>
-    <div class="team-section">
-      <div class="team-member">
-        <img src="static/yasemin-photo.jpeg" alt="Member 1" />
-        <p>Yasemin AKIN</p>
-      </div>
-      <div class="team-member">
-        <img src="static/deniz-photo.jpeg" alt="Member 2" />
-        <p>Deniz Can ÖZDEMİR</p>
-      </div>
-      <div class="team-member">
-        <img src="static/ogulcan-photo.jpeg" alt="Member 3" />
-        <p>Oğulcan KARAKOLLUKÇU</p>
-      </div>
-      <div class="team-member">
-        <img src="static/alphan-photo.jpeg" alt="Member 4" />
-        <p>Alphan TULUKCU</p>
-      </div>
-      <div class="team-member">
-        <img src="static/ilhami-photo.jpeg" alt="Member 5" />
-        <p>İlhami ULUĞTÜRKKAN</p>
-      </div>
-    </div>
-    <p>
-      We are Senior Computer Science students @ Bilkent University, Türkiye, 
-      developing our innovative senior project idea that we named "Köpük"!
-    </p>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="tab-content">
+      <h2>About YOD-AI</h2>
+      <p>
+        YOD-AI is a project aimed at revolutionizing the animal adoption process in Türkiye by leveraging advanced technologies such as image recognition,
+        artificial intelligence, and automated matching algorithms. Our platform is designed to create detailed animal profiles and connect potential adopters with the
+        perfect pet, ensuring sustainable adoptions and reducing the strain on shelters. The initiative not only addresses the immediate challenges posed by recent legislation,
+        but also contributes to the long-term well-being of stray animals.
+      </p>
+      <p>
+        With a focus on transparency, efficiency, and user experience, our platform provides end-to-end support from pre-adoption inquiries to post-adoption care.
+        Through smart matching and AI-powered chat assistance, we are dedicated to fostering lasting bonds between animals and their new families.
+      </p>
+    </section>
 
-  <section>
-    <h2>Contact Us</h2>
-    <p><strong>Address:</strong> Üniversiteler Mahallesi Bilkent 2 Park Sitesi, L3/11, Çankaya, Ankara, 06800</p>
-    <p><strong>Email:</strong> <a href="mailto:yod.ai2024@gmail.com">yod.ai2024@gmail.com</a></p>
-    <p><strong>Phone:</strong> +90 (538) 939 21 11 / +90 (537) 880 62 88</p>
-    <p><strong>Website:</strong> <a href="https://yod-ai.github.io/yod-ai/" target="_blank">https://yod-ai.github.io/yod-ai/</a></p>
-  </section>
+    <!-- Team Section -->
+    <section id="team" class="tab-content">
+      <h2>Who We Are</h2>
+      <div class="team-section">
+        <div class="team-member">
+          <img src="static/yasemin-photo.jpeg" alt="Yasemin AKIN" />
+          <p>Yasemin AKIN</p>
+        </div>
+        <div class="team-member">
+          <img src="static/deniz-photo.jpeg" alt="Deniz Can ÖZDEMİR" />
+          <p>Deniz Can ÖZDEMİR</p>
+        </div>
+        <div class="team-member">
+          <img src="static/ogulcan-photo.jpeg" alt="Oğulcan KARAKOLLUKÇU" />
+          <p>Oğulcan KARAKOLLUKÇU</p>
+        </div>
+        <div class="team-member">
+          <img src="static/alphan-photo.jpeg" alt="Alphan TULUKCU" />
+          <p>Alphan TULUKCU</p>
+        </div>
+        <div class="team-member">
+          <img src="static/ilhami-photo.jpeg" alt="İlhami ULUĞTÜRKKAN" />
+          <p>İlhami ULUĞTÜRKKAN</p>
+        </div>
+      </div>
+      <p>
+        We are Senior Computer Science students at Bilkent University, Türkiye, developing our innovative senior project idea that we named "Köpük"!
+      </p>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="tab-content">
+      <h2>Latest News & Updates</h2>
+      <p>
+        Stay tuned for the latest news, updates, and insights about our project and activities. We are constantly working on improving the adoption process and will be sharing our progress, success stories, and upcoming features here.
+      </p>
+      <p>
+        (This section will be updated regularly with remote content from our partners and news feeds.)
+      </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="tab-content">
+      <h2>Contact Us</h2>
+      <p><strong>Address:</strong> Üniversiteler Mahallesi Bilkent 2 Park Sitesi, L3/11, Çankaya, Ankara, 06800</p>
+      <p><strong>Email:</strong> <a href="mailto:yod.ai2024@gmail.com">yod.ai2024@gmail.com</a></p>
+      <p><strong>Phone:</strong> +90 (538) 939 21 11 / +90 (537) 880 62 88</p>
+      <p><strong>Website:</strong> <a href="https://yod-ai.github.io/yod-ai/" target="_blank">https://yod-ai.github.io/yod-ai/</a></p>
+    </section>
+  </main>
 
   <footer>
     &copy; 2024 Yodai Group. All rights reserved.
   </footer>
 
+  <script>
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        tabLinks.forEach(item => item.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        link.classList.add('active');
+        document.getElementById(link.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
