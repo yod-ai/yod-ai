@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState, useRef } from "react";
 import BubblesBackground from "./components/BubblesBackground";
 import CustomNavbar from "./components/CustomNavbar";
@@ -19,15 +18,15 @@ function App() {
         switch (activeTab) {
             case "home":
                 return (
-                    <section className="max-w-7xl mx-auto p-6 pt-20">
+                    <section className="max-w-7xl mx-auto p-4 md:p-6 pt-10 md:pt-20">
                         <div className="text-center">
-                            <h1 className="text-8xl font-extrabold text-[#DB4437] drop-shadow-lg mb-4 pt-20">
+                            <h1 className="text-4xl md:text-8xl font-extrabold text-[#DB4437] drop-shadow-lg mb-4 pt-10 md:pt-20">
                                 Welcome to YOD-AI!
                             </h1>
-                            <p className="text-xl mb-2 text-black font-bold pt-15">
+                            <p className="text-lg md:text-xl mb-2 text-black font-bold pt-5 md:pt-15">
                                 Stay updated with the latest information and news about our project and activities.
                             </p>
-                            <p className="text-xl text-black pt-10">
+                            <p className="text-lg md:text-xl text-black pt-5 md:pt-10">
                                 We are Senior Computer Science students at Bilkent University, Türkiye, developing our innovative senior project idea named{" "}
                                 <span className="font-semibold text-black">"Köpük"</span>!
                             </p>
@@ -41,12 +40,12 @@ function App() {
                                         e.preventDefault();
                                         window.scrollBy({ top: 700, behavior: "smooth" });
                                     }}
-                                    className="text-[#DB4437] text-lg hover:font-bold cursor-pointer pt-15"
+                                    className="text-[#DB4437] text-base md:text-lg hover:font-bold cursor-pointer pt-5 md:pt-15"
                                 >
                                     Who Are We?
                                 </a>
                             </div>
-                            <h2 className="text-4xl font-bold text-[#DB4437] text-center mb-4 pt-30 pb-5">
+                            <h2 className="text-2xl md:text-4xl font-bold text-[#DB4437] text-center mb-4 pt-15 md:pt-30 pb-3 md:pb-5">
                                 Who Are We?
                             </h2>
                             <div
@@ -54,13 +53,13 @@ function App() {
                                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 overflow-x-auto"
                             >
                                 {teamMembers.map((member, index) => (
-                                    <div key={index} className="bg-white p-3 text-center rounded-sm hover:scale-105">
+                                    <div key={index} className="bg-white p-2 md:p-3 text-center rounded-sm hover:scale-105">
                                         <img
                                             src={member.img}
                                             alt={member.name}
-                                            className="w-32 h-32 object-cover mx-auto mb-2 rounded-full"
+                                            className="w-24 h-24 md:w-32 md:h-32 object-cover mx-auto mb-2 rounded-full"
                                         />
-                                        <p className="font-bold text-lg text-black">{member.name}</p>
+                                        <p className="font-bold text-base md:text-lg text-black">{member.name}</p>
                                         <p className="text-sm text-gray-700">
                                             Senior Computer Science Student @ Bilkent University
                                         </p>
@@ -70,7 +69,7 @@ function App() {
                         </div>
 
                         <div className="mt-8">
-                            <h2 className="text-4xl font-bold text-[#DB4437] text-center mb-4 pt-5 pb-5">
+                            <h2 className="text-2xl md:text-4xl font-bold text-[#DB4437] text-center mb-4 pt-15 md:pt-10 pb-3 md:pb-5">
                                 Gallery
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -79,7 +78,7 @@ function App() {
                                         <img
                                             src={src}
                                             alt={`Gallery Image ${index + 1}`}
-                                            className="w-full h-48 object-cover rounded-sm"
+                                            className="w-full h-32 md:h-48 object-cover rounded-sm"
                                         />
                                     </div>
                                 ))}
@@ -89,8 +88,8 @@ function App() {
                 );
             case "about":
                 return (
-                    <section className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg my-10">
-                        <h2 className="text-3xl font-bold text-[#DB4437] mb-5">
+                    <section className="max-w-5xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-lg my-5 md:my-10">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#DB4437] mb-5">
                             About Köpük: Our First Software Solution
                         </h2>
                         <a
@@ -102,11 +101,11 @@ function App() {
                             <img
                                 src={`${import.meta.env.BASE_URL}static/canva.svg`}
                                 alt="Canva"
-                                className="w-6 h-6"
+                                className="w-5 h-5 md:w-6 md:h-6"
                             />
-                            <span className="text-base text-[#DB4437] hover:font-bold">Click to Open Demo Presentation of Köpük!</span>
+                            <span className="text-sm md:text-base text-[#DB4437] hover:font-bold">Click to Open Demo Presentation of Köpük!</span>
                         </a>
-                        <p className="mb-4 text-black">
+                        <p className="mb-2 md:mb-4 text-black text-sm md:text-base text-justify">
                             After the recent legislation in Türkiye that mandates the removal of stray animals from public places and their placement in shelters,
                             it is urgent to enhance the adoption process to avoid overcrowding and euthanasia risks for these animals. In July 2024,
                             this law was passed to address public safety concerns, but it has proved to be a source of tremendous difficulty for animal welfare organizations.
@@ -116,14 +115,14 @@ function App() {
                             Beyond providing a solution to the urgent problems created by the new law, this initiative also serves to support the long-term health of stray animals in
                             Türkiye through the promotion of sustainable adoptions and strained shelter resources.
                         </p>
-                        <div className="w-full h-64 rounded-md flex items-center justify-center">
+                        <div className="w-full h-40 md:h-64 rounded-md flex items-center justify-center">
                             <img
-                                src={`${import.meta.env.BASE_URL}static/dog-cat.png`} // Replace with your actual image
+                                src={`${import.meta.env.BASE_URL}static/dog-cat.png`}
                                 alt="About visual 1"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
                         </div>
-                        <p className="text-black">
+                        <p className="mt-4 text-black text-sm md:text-base text-justify">
                             The core purpose of Köpük is to simplify and optimize the process of matching potential adopters with animals in need of a loving home.
                             The platform achieves this by creating in-depth, comprehensive animal profiles that include health records, vaccination histories, behavioral assessments,
                             and personalized care recommendations. These detailed profiles provide adopters with a clear understanding of each animal’s needs, enabling them to make
@@ -134,9 +133,9 @@ function App() {
                             returned adoptions and alleviates the burden on overcrowded shelters but also advances the broader mission of animal welfare by ensuring that animals find permanent,
                             loving homes while equipping adopters with the necessary tools and knowledge for responsible pet care.
                         </p>
-                        <div className="w-full h-64 rounded-md flex items-center justify-center">
+                        <div className="w-full h-40 md:h-64 rounded-md flex items-center justify-center mt-4">
                             <img
-                                src={`${import.meta.env.BASE_URL}static/dog-standing.png`} // Replace with your actual image
+                                src={`${import.meta.env.BASE_URL}static/dog-standing.png`}
                                 alt="About visual 2"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
@@ -145,17 +144,15 @@ function App() {
                 );
             case "news":
                 return (
-                    <section className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg my-10">
-                        <h2 className="text-3xl font-bold text-[#DB4437] mb-4">Latest News & Updates</h2>
-                        <p className="mb-4 text-gray-700">
+                    <section className="max-w-5xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-lg my-5 md:my-10">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#DB4437] mb-4">Latest News & Updates</h2>
+                        <p className="mb-2 md:mb-4 text-gray-700 text-sm md:text-base">
                             Stay tuned for the latest news, updates, and insights about our project and activities...
                         </p>
-                        <p className="text-gray-700 mb-6">(This section will be updated regularly...)</p>
-
-                        {/* News Image Placeholder */}
-                        <div className="w-full h-64 rounded-md flex items-center justify-center">
+                        <p className="text-gray-700 mb-4 text-sm md:text-base">(This section will be updated regularly...)</p>
+                        <div className="w-full h-40 md:h-64 rounded-md flex items-center justify-center">
                             <img
-                                src={`${import.meta.env.BASE_URL}static/cat-standing.png`} // Replace this with your actual image path
+                                src={`${import.meta.env.BASE_URL}static/cat-standing.png`}
                                 alt="News visual"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
@@ -164,21 +161,21 @@ function App() {
                 );
             case "contact":
                 return (
-                    <section className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-lg my-10">
-                        <h2 className="text-3xl font-bold text-[#DB4437] mb-4">Contact Us</h2>
-                        <p className="text-gray-700">
+                    <section className="max-w-5xl mx-auto p-4 md:p-6 bg-white rounded-lg shadow-lg my-5 md:my-10">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#DB4437] mb-4">Contact Us</h2>
+                        <p className="text-gray-700 text-sm md:text-base">
                             <strong>Address:</strong> Üniversiteler Mahallesi Bilkent 2 Park Sitesi, L3/11, Çankaya, Ankara, 06800
                         </p>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 text-sm md:text-base">
                             <strong>Email:</strong>{" "}
                             <a href="mailto:yod.ai2024@gmail.com" className="text-[#DB4437] underline">
                                 yod.ai2024@gmail.com
                             </a>
                         </p>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 text-sm md:text-base">
                             <strong>Phone:</strong> +90 (538) 939 21 11 / +90 (537) 880 62 88
                         </p>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 text-sm md:text-base">
                             <strong>Website:</strong>{" "}
                             <a
                                 href="https://yod-ai.github.io/yod-ai/"
@@ -198,13 +195,12 @@ function App() {
 
     return (
         <div className="min-h-screen relative bg-white pt-24 pb-16">
-            {/* Animated bubble background with blur overlay */}
             <BubblesBackground />
             <div className="relative z-10">
                 <CustomNavbar activeTab={activeTab} setActiveTab={setActiveTab} />
                 <main>{renderTabContent()}</main>
                 <footer className="fixed bottom-0 left-0 w-full bg-white p-4 shadow-t flex justify-between items-center">
-                    <div className="text-sm text-black">2024 YOD-AI. All rights reserved.</div>
+                    <div className="text-xs md:text-sm text-black">2024 YOD-AI. All rights reserved.</div>
                     <a
                         href="https://www.instagram.com/kopukorg/"
                         target="_blank"
@@ -214,9 +210,9 @@ function App() {
                         <img
                             src={`${import.meta.env.BASE_URL}static/instagram-logo-thin.svg`}
                             alt="Instagram"
-                            className="w-6 h-6"
+                            className="w-5 h-5 md:w-6 md:h-6"
                         />
-                        <span className="text-base hover:font-bold">Follow us on Instagram</span>
+                        <span className="text-xs md:text-base hover:font-bold">Follow us on Instagram</span>
                     </a>
                 </footer>
             </div>
