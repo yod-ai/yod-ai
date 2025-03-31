@@ -15,7 +15,7 @@ export default function BubblesBackground() {
         []
     );
     // Overlay image for the bubble effect – place overlay2.png in public/static/
-    const overlayImage = "/static/overlay2.png";
+    const overlayImage = `${import.meta.env.BASE_URL}static/overlay2.png`;
 
     useEffect(() => {
         const { innerWidth: w, innerHeight: h } = window;

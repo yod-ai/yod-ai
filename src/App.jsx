@@ -4,11 +4,11 @@ import BubblesBackground from "./components/BubblesBackground";
 import CustomNavbar from "./components/CustomNavbar";
 
 const teamMembers = [
-    { img: "/static/deniz-photo.jpeg", name: "Deniz Can ÖZDEMİR" },
-    { img: "/static/ogulcan-photo.jpeg", name: "Oğulcan KARAKOLLUKÇU" },
-    { img: "/static/yasemin-photo.jpeg", name: "Yasemin AKIN" },
-    { img: "/static/alphan-photo.jpeg", name: "Alphan TULUKCU" },
-    { img: "/static/ilhami-photo.jpeg", name: "İlhami ULUĞTÜRKKAN" }
+    { img: `${import.meta.env.BASE_URL}static/deniz-photo.jpeg`, name: "Deniz Can ÖZDEMİR" },
+    { img: `${import.meta.env.BASE_URL}static/ogulcan-photo.jpeg`, name: "Oğulcan KARAKOLLUKÇU" },
+    { img: `${import.meta.env.BASE_URL}static/yasemin-photo.jpeg`, name: "Yasemin AKIN" },
+    { img: `${import.meta.env.BASE_URL}static/alphan-photo.jpeg`, name: "Alphan TULUKCU" },
+    { img: `${import.meta.env.BASE_URL}static/ilhami-photo.jpeg`, name: "İlhami ULUĞTÜRKKAN" }
 ];
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
                                 Gallery
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {["/static/PHOTO-1.jpg", "/static/PHOTO-2.jpg", "/static/PHOTO-3.jpg"].map((src, index) => (
+                                {[`${import.meta.env.BASE_URL}static/PHOTO-1.jpg`, `${import.meta.env.BASE_URL}static/PHOTO-2.jpg`, `${import.meta.env.BASE_URL}static/PHOTO-3.jpg`].map((src, index) => (
                                     <div key={index} className="bg-white rounded-sm shadow-lg p-2">
                                         <img
                                             src={src}
@@ -100,7 +100,7 @@ function App() {
                             className="flex items-center space-x-2 transition-colors duration-200 mb-5"
                         >
                             <img
-                                src="/static/canva.svg"
+                                src={`${import.meta.env.BASE_URL}static/canva.svg`}
                                 alt="Canva"
                                 className="w-6 h-6"
                             />
@@ -118,7 +118,7 @@ function App() {
                         </p>
                         <div className="w-full h-64 rounded-md flex items-center justify-center">
                             <img
-                                src="/static/dog-cat.png" // Replace with your actual image
+                                src={`${import.meta.env.BASE_URL}static/dog-cat.png`} // Replace with your actual image
                                 alt="About visual 1"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
@@ -136,7 +136,7 @@ function App() {
                         </p>
                         <div className="w-full h-64 rounded-md flex items-center justify-center">
                             <img
-                                src="/static/dog-standing.png" // Replace with your actual image
+                                src={`${import.meta.env.BASE_URL}static/dog-standing.png`} // Replace with your actual image
                                 alt="About visual 2"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
@@ -155,7 +155,7 @@ function App() {
                         {/* News Image Placeholder */}
                         <div className="w-full h-64 rounded-md flex items-center justify-center">
                             <img
-                                src="/static/cat-standing.png" // Replace this with your actual image path
+                                src={`${import.meta.env.BASE_URL}static/cat-standing.png`} // Replace this with your actual image path
                                 alt="News visual"
                                 className="max-h-full max-w-full object-cover rounded-md"
                             />
@@ -212,7 +212,7 @@ function App() {
                         className="flex items-center space-x-2 transition-colors duration-200"
                     >
                         <img
-                            src="/static/instagram-logo-thin.svg"
+                            src={`${import.meta.env.BASE_URL}static/instagram-logo-thin.svg`}
                             alt="Instagram"
                             className="w-6 h-6"
                         />
