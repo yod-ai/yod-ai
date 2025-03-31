@@ -14,7 +14,7 @@ export default function CustomNavbar({ activeTab, setActiveTab }) {
             <div className="flex items-center">
                 <div className="relative h-28 w-40">
                     <img
-                        src="/static/yodai-logo.png"
+                        src={`${import.meta.env.BASE_URL}static/yodai-logo.png`}
                         alt="YOD-AI Logo"
                         className="absolute inset-0 w-full h-full object-contain"
                     />
